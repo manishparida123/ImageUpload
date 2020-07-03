@@ -6,7 +6,7 @@ const AWS = require('aws-sdk')
 AWS.config.update({ region: process.env.REGION || 'ap-south-1' })
 const s3 = new AWS.S3();
 
-const uploadBucket = 'severless-s3-s3bucket-gewgtbvjabb8'   // << LOOK!
+const uploadBucket = 'serverless-photos-s3bucket-6v8lrh5imqc'   // << LOOK!
 
 exports.handler = async (event) => {
   const result = await getUploadURL()
