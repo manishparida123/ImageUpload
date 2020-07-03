@@ -3,20 +3,17 @@
     <h1>CC Video Uploader</h1>
 
     <div v-if="!image">
-      <h2>Select an Video</h2>
+      <h2>Select an Image</h2>
       <input type="file" @change="onFileChange">
     </div>
     <div v-else>
       <img :src="image" />
-      <button v-if="!uploadURL" @click="removeImage">Remove Video</button>
-      <button v-if="!uploadURL" @click="uploadImage">Upload Video</button>
+      <button v-if="!uploadURL" @click="removeImage">Remove Image</button>
+      <button v-if="!uploadURL" @click="uploadImage">Upload Image</button>
     </div>
-    <h2 v-if="uploadURL">Success! Video uploaded to:</h2>
+    <h2 v-if="uploadURL">Success! Image uploaded to:</h2>
     <a :href="uploadURL">{{ uploadURL }}</a>
-    <div>
-    <a href="https://v2-alpha.d3v123wpfzmfwj.amplifyapp.com/">Visit S3 Explorer!</a>
     </div>
-  </div>
 </template>
 
 <script>
@@ -43,10 +40,10 @@ export default {
       let reader = new FileReader()
 
       reader.onload = (e) => {
-        console.log('length: ', e.target.result.includes('data:video/mp4'))
-        if (!e.target.result.includes('data:video/mp4')) {
-          if (!e.target.result.includes('data:video/avi')){
-            return alert('Wrong file type - MP4 & AVI only.')
+        console.log('length: ', e.target.result.includes('data:image/jpeg'))
+        if (!e.target.result.includes('data:image/jpeg')) {
+          if (!e.target.result.includes('data:image/png')){
+            return alert('Wrong file type - JPG & PNG only.')
           }				
         }
         if (e.target.result.length > MAX_IMAGE_SIZE) {
@@ -67,7 +64,7 @@ export default {
       // Get the presigned URL
       const response = await axios({
         method: 'GET',
-        url: `https://js4jevuqm1.execute-api.ap-south-1.amazonaws.com/Prod/`
+        url: `https://vskwii1v86.execute-api.ap-south-1.amazonaws.com/Prod/`
       })
 
       console.log('Response: ', response.data)
@@ -78,7 +75,7 @@ export default {
       for (var i = 0; i < binary.length; i++) {
         array.push(binary.charCodeAt(i))
       }
-      let blobData = new Blob([new Uint8Array(array)], {type: 'video/mp4'})
+      let blobData = new Blob([new Uint8Array(array)], {type: 'image/jpeg'})
       console.log('Uploading to: ', response.data.uploadURL)
 
       const result = await fetch(response.data.uploadURL, {
