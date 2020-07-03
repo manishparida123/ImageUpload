@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>CC Video Uploader</h1>
+    <h1>Image Uploader Assignment</h1>
 
     <div v-if="!image">
       <h2>Select an Image</h2>
