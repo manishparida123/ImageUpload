@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img id="logo" src="https://cloud-computing-03121995.s3.ap-south-1.amazonaws.com/cloud-computing-logo-concept.jpg">
+    <img id="logo" src="https://cloudcomputingassignment0407.s3.ap-south-1.amazonaws.com/768px-Image_upload-tango.svg.png">
     <s3uploader/>
   </div>
 </template>
